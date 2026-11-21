@@ -1,71 +1,247 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nayshi — En construction</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #0d1117;
-      color: #e6edf3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
-    .card {
-      background-color: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 40px 32px;
-      max-width: 440px;
-      width: 100%;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 12px;
-      color: #58a6ff;
-    }
-    p {
-      color: #8b949e;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .badge {
-      display: inline-block;
-      background-color: #238636;
-      color: #ffffff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
-    }
-    a {
-      display: block;
-      margin-top: 24px;
-      color: #58a6ff;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>nayshi's page</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f7f7f9;
+    --border: #e5e5ea;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --accent: #2563eb;
+    --accent-soft: #eff4ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ===== HEADER ===== */
+  header { border-bottom: 1px solid var(--border); }
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    height: 60px;
+  }
+  .logo { font-weight: 700; font-size: 1rem; color: var(--text); }
+  .logo:hover { text-decoration: none; }
+  .nav-links { display: flex; gap: 22px; }
+  .nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 56px 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.2; }
+  h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
+  h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+  p { color: var(--muted); margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ===== INTRO ===== */
+  .intro p { font-size: 1rem; max-width: 600px; }
+  .intro .meta {
+    display: inline-block; font-size: 0.82rem; color: var(--accent);
+    background: var(--accent-soft); padding: 4px 12px; border-radius: 6px;
+    margin-bottom: 16px; font-weight: 500;
+  }
+
+  /* ===== LISTE ===== */
+  .list { list-style: none; }
+  .list li { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .list li:last-child { border-bottom: none; }
+  .list li::before { content: '→'; color: var(--accent); font-weight: 600; flex-shrink: 0; }
+
+  /* ===== PROJETS ===== */
+  .project { padding: 24px 0; border-bottom: 1px solid var(--border); }
+  .project:last-child { border-bottom: none; padding-bottom: 0; }
+  .project:first-child { padding-top: 0; }
+  .project-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 12px; margin-bottom: 6px; flex-wrap: wrap;
+  }
+  .project-head span { font-size: 0.8rem; color: var(--muted); }
+  .project p { font-size: 0.92rem; margin-bottom: 10px; }
+  .project .highlight {
+    background: var(--accent-soft); color: var(--accent);
+    padding: 1px 6px; border-radius: 4px; font-weight: 500; font-size: 0.9em;
+  }
+  .project .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .project .tags span {
+    font-size: 0.75rem; padding: 2px 8px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 4px; color: var(--muted);
+  }
+  .project-link { font-size: 0.85rem; font-weight: 500; display: inline-block; margin-top: 8px; }
+
+  /* ===== CONTACT ===== */
+  .contact-links { display: flex; flex-direction: column; gap: 8px; }
+  .contact-links a { display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; }
+  .contact-links a::before { content: '↗'; color: var(--muted); font-size: 0.85rem; }
+
+  /* ===== FOOTER ===== */
+  footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; font-size: 0.85rem; color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    h1 { font-size: 1.6rem; }
+    section { padding: 40px 0; }
+  }
+</style>
 </head>
 <body>
-  <div class="card">
-    <h1>Nayshi</h1>
-    <p>Le domaine <strong>nayshi.fr</strong> est bien relié à GitHub Pages. Le site arrive bientôt !</p>
-    <span class="badge">● En ligne</span>
-    <a href="https://github.com" target="_blank">Voir mon profil GitHub →</a>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">nayshi</a>
+      <div class="nav-links">
+        <a href="#projets">Projets</a>
+        <a href="#competences">Compétences</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
   </div>
+</header>
+
+<main>
+  <!-- ===== INTRO ===== -->
+  <section class="intro">
+    <div class="container">
+      <p>
+        Je suis élève en <strong>Terminale STI2D</strong>, spécialité
+        <strong>SIN</strong> (Systèmes d'Information et Numérique).
+        J'aime la programmation, l'électronique, les réseaux et tout ce qui
+        touche à l'informatique en général.
+      </p>
+      <p>
+        Sur cette page, tu trouveras mes projets personnels et ceux liés à mes études.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== PROJETS ===== -->
+  <section id="projets">
+    <div class="container">
+      <h2>Mes projets</h2>
+
+      <!-- PROJET 1 : DRUM TUNER -->
+      <div class="project">
+        <div class="project-head">
+          <h3>Automatic Drum Tuner</h3>
+          <span>STI2D SIN · Olympiades</span>
+        </div>
+        <p>
+          Un <strong>accordeur de batterie automatique</strong>
+          portable, conçu pour accorder un fût rapidement et précisément sans
+          expertise musicale. L'utilisateur choisit une gamme sur un petit
+          écran, place le boîtier sur un tirant, et le système fait le reste :
+        </p>
+        <p>
+          Un <strong>micro</strong> analyse la fréquence donnée par la peau,
+          un <strong>capteur de tension mécanique</strong> affine le réglage, puis un
+          <strong>microcontrôleur</strong> pilote un <strong>moteur</strong> qui serre le tirant
+          jusqu'à la cible. Le tout tient dans un boîtier compact, alimenté par une batterie et
+          rechargeable via USB-C, pour un budget d'environ <strong>75 €</strong>, avec des
+          pièces imprimées en 3D.
+        </p>
+        <div class="tags">
+          <span>Arduino / microcontrôleur</span>
+          <span>Capteurs</span>
+          <span>Mécanique</span>
+          <span>Impression 3D</span>
+          <span>C++</span>
+        </div>
+        <a href="https://github.com/Cacathoes/Automatic-Drum-Tuner" target="_blank" rel="noopener" class="project-link">
+          Voir le dépôt GitHub ↗
+        </a>
+      </div>
+      <!-- FIN PROJET 1 -->
+
+      <!-- PROJET 2 : HOMELAB -->
+      <div class="project">
+        <div class="project-head">
+          <h3>Mon homelab</h3>
+          <span>Projet perso · Apprentissage</span>
+        </div>
+        <p>
+          J'ai monté une <strong>machine serveur</strong> chez moi
+          pour héberger mes propres services et apprendre à gérer un serveur, plusieurs machines,
+          le <strong>réseau</strong> et <strong>Linux</strong>.
+        </p>
+        <p>
+          L'idée initiale était de donner une <strong>seconde vie</strong> à un ancien pc portable,
+          j'ai ensuite voulu améliorer mon environnement en assemblant une machine
+          fixe avec des composants que je possédais déjà, installer un
+          hyperviseur (<strong>Proxmox</strong>), créer des machines virtuelles
+          et des conteneurs (<strong>Docker / LXC</strong>), et y faire tourner
+          des services utiles au quotidien (DNS local, stockage, médias, jeu).
+          C'est aussi l'occasion de toucher au <strong>réseau</strong>
+          (adressage IP, segmentation, accès distant) et à
+          l'<strong>administration Linux</strong> (utilisateurs, droits,
+          mises à jour, sauvegardes).
+        </p>
+        <div class="tags">
+          <span>Linux</span>
+          <span>Proxmox</span>
+          <span>Docker / LXC</span>
+          <span>Réseau</span>
+          <span>Auto-hébergement</span>
+        </div>
+        <!-- Tu peux ajouter un lien si tu documentes ton homelab sur GitHub -->
+      </div>
+      <!-- FIN PROJET 2 -->
+
+    </div>
+  </section>
+
+  <!-- ===== COMPÉTENCES ===== -->
+  <section id="competences">
+    <div class="container">
+      <h2>Ce que j'apprends / utilise</h2>
+      <ul class="list">
+        <li><strong>Programmation :</strong> Python, C/C++ (Arduino), HTML/CSS</li>
+        <li><strong>Électronique :</strong> microcontrôleurs, capteurs, câblage, breadboard</li>
+        <li><strong>Systèmes & réseaux :</strong> Linux (Debian), Proxmox, Docker, bases du réseau (IP, DNS)</li>
+        <li><strong>Outils :</strong> Git/GitHub, VS Code, Tinkercad, impression 3D</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <h2>Me contacter</h2>
+      <div class="contact-links">
+        <a href="mailto:ton.email@example.com">ton.email@example.com</a>
+        <a href="https://github.com/nayshi-dev" target="_blank" rel="noopener">github.com/nayshi-dev</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p><span id="year"></span></p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
